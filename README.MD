@@ -1,68 +1,72 @@
-Trabalho 03 - Administração de Ambientes Linux
-Nome do Aluno: Lucas Weigel
-Tema do Trabalho: Sistema de Streaming de Música (Unify)
-Instituição: Unidavi
+# Trabalho 03 - Administração de Ambientes Linux
 
-📌 Descrição do Cenário
-O projeto "Unify" simula a infraestrutura de uma plataforma de streaming de áudio. Este ambiente foi provisionado utilizando Docker com um container Ubuntu e configurado inteiramente via Shell Script. O objetivo é automatizar tarefas operacionais de DevOps, como instalação de servidores web, processadores de mídia (FFmpeg), backups automatizados, deploy de interface web, monitoramento de recursos físicos e controle restrito de permissões para diretórios de áudio.
+**Nome do Aluno:** Lucas Weigel  
+**Tema do Trabalho:** Sistema de Streaming de Música (Unify)  
+**Instituição:** Unidavi  
 
-🛠️ Tecnologias Utilizadas
-Sistema Operacional: Linux (Ubuntu 22.04)
+---
 
-Automação: Shell Script (Bash)
+## 📌 Descrição do Cenário
 
-Infraestrutura: Docker & Docker Compose
+O projeto **"Unify"** simula a infraestrutura de uma plataforma de streaming de áudio. Este ambiente foi provisionado utilizando Docker com um container Ubuntu e configurado inteiramente via Shell Script. O objetivo é automatizar tarefas operacionais de DevOps, como instalação de servidores web, processadores de mídia (FFmpeg), backups automatizados, deploy de interface web, monitoramento de recursos físicos e controle restrito de permissões para diretórios de áudio.
 
-Servidor Web: Apache2
+---
 
-Processamento de Mídia: FFmpeg
+## 🛠️ Tecnologias Utilizadas
 
-📂 Estrutura de Pastas
-scripts/: Contém todos os 9 scripts de automação + o menu interativo.
+* **Sistema Operacional:** Linux (Ubuntu 22.04)
+* **Automação:** Shell Script (Bash)
+* **Infraestrutura:** Docker & Docker Compose
+* **Servidor Web:** Apache2
+* **Processamento de Mídia:** FFmpeg
 
-source/: Código fonte estático (HTML) da plataforma web Unify.
+---
 
-backups/: Diretório persistente onde os arquivos .tar.gz são salvos.
+## 📂 Estrutura de Pastas
 
-logs/: Histórico de execução de todas as operações e monitoramento.
+* `scripts/`: Contém todos os 9 scripts de automação + o menu interativo.
+* `source/`: Código fonte estático (HTML) da plataforma web Unify.
+* `backups/`: Diretório persistente onde os arquivos `.tar.gz` são salvos.
+* `logs/`: Histórico de execução de todas as operações e monitoramento.
+* `evidencias/`: Capturas de tela comprovando a execução do projeto.
 
-evidencias/: Capturas de tela comprovando a execução do projeto.
+---
 
-⚙️ Explicação dos Scripts
-01_update.sh: Atualiza a lista de pacotes e o sistema operacional via apt.
+## ⚙️ Explicação dos Scripts
 
-02_apache.sh: Instala e valida o Apache2 e o pacote FFmpeg para mídias.
+1. **`01_update.sh`:** Atualiza a lista de pacotes e o sistema operacional via `apt`.
+2. **`02_apache.sh`:** Instala e valida o Apache2 e o pacote FFmpeg para mídias.
+3. **`03_estrutura.sh`:** Cria as subpastas persistentes do streaming (musicas, podcasts, playlists).
+4. **`04_backup.sh`:** Compacta a pasta de mídias e salva em `/backups` com data/hora.
+5. **`05_deploy.sh`:** Copia os arquivos de `/source` para `/var/www/html`.
+6. **`06_processos.sh`:** Lista o TOP 10 processos que mais consomem memória, busca e encerra processos.
+7. **`07_monitoramento.sh`:** Analisa uso de CPU, RAM e Disco, e valida o status do Apache.
+8. **`08_usuarios_permissoes.sh`:** Cria o grupo `unify_ops`, usuário `unify_dj` e restringe a pasta de mídias.
+9. **`09_relatorio.sh`:** Gera um compilado geral do sistema e salva em `/logs`.
+* **`menu.sh`:** Central interativa para executar todos os scripts acima.
 
-03_estrutura.sh: Cria as subpastas persistentes do streaming (musicas, podcasts, playlists).
+---
 
-04_backup.sh: Compacta a pasta de mídias e salva em /backups com data/hora.
+## 🚀 Como Executar o Projeto
 
-05_deploy.sh: Copia os arquivos de /source para /var/www/html.
+1. Clone este repositório.
 
-06_processos.sh: Lista o TOP 10 processos que mais consomem memória, busca e encerra processos.
+2. Na raiz do projeto, suba o container em background:
+   ```bash
+   docker compose up -d --build
+   ```
 
-07_monitoramento.sh: Analisa uso de CPU, RAM e Disco, e valida o status do Apache.
+3. Acesse o terminal do container Linux:
+   ```bash
+   docker exec -it trabalho03-linux bash
+   ```
 
-08_usuarios_permissoes.sh: Cria o grupo unify_ops, usuário unify_dj e restringe a pasta de mídias.
+4. Dê permissão de execução para todos os scripts:
+   ```bash
+   chmod +x /scripts/*.sh
+   ```
 
-09_relatorio.sh: Gera um compilado geral do sistema e salva em /logs.
-
-menu.sh: Central interativa para executar todos os scripts acima.
-
-🚀 Como Executar o Projeto
-Clone este repositório.
-
-Na raiz do projeto, suba o container em background:
-
-Bash
-docker compose up -d --build
-3.  Acesse o terminal do container Linux:
-    ```bash
-    docker exec -it trabalho03-linux bash
-Dê permissão de execução para todos os scripts:
-
-chmod +x /scripts/*.sh
-
-5.  Execute o menu interativo:
-    ```bash
-/scripts/menu.sh
+5. Execute o menu interativo:
+   ```bash
+   /scripts/menu.sh
+   ```
