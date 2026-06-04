@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  unify-server:
+    build: .
+    container_name: trabalho03-linux
+    ports:
+      - "8080:80"
+    volumes:
+      - ./scripts:/scripts
+      - ./source:/source
+      - ./backups:/backups
+      - ./logs:/logs
+      - ./evidencias:/evidencias
+      - unify_data:/app/unify
+
+volumes:
+  unify_data:

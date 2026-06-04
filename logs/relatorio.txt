@@ -1,0 +1,12 @@
+=== RELATÓRIO UNIFY - 2026-06-04 20:55:40 ===
+Tema: Streaming de Música
+--- ESPAÇO EM DISCO ---
+Filesystem      Size  Used Avail Use% Mounted on
+overlay        1007G  4.9G  951G   1% /
+--- BACKUPS GERADOS ---
+total 0
+-rw-r--r-- 1 root root 258 Jun  4 20:54 backup_unify_2026-06-04_20-54.tar.gz
+--- SITE PUBLICADO ---
+total 8
+-rwxr-xr-x 1 root root 268 Jun  4 20:54 index.html
+-rwxr-xr-x 1 root root 318 Jun  4 20:54 sobre.html
