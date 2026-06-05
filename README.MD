@@ -47,6 +47,15 @@ O projeto **"Unify"** simula a infraestrutura de uma plataforma de streaming de 
 
 ---
 
+## 🌐 Como Acessar o Apache
+Após rodar o script de Deploy (Opção 5 no Menu), abra o seu navegador na máquina local e acesse:
+* **http://localhost:8080**
+
+🔗 Links Importantes
+* **DockerHub:** https://hub.docker.com/repository/docker/lucasw1063/unify-streaming-cloud/general
+
+---
+
 ## 🚀 Como Executar o Projeto
 
 1. Clone este repositório.
